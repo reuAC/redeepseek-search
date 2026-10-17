@@ -1,0 +1,72 @@
+.host {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 50;
+  padding: 4px 8px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  font: var(--md-sys-typescale-body-small);
+  letter-spacing: var(--md-sys-typescale-body-small-tracking);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(var(--_x, 0), var(--_y, 0)) scale(0.8);
+  transition:
+    opacity var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard-accelerate),
+    transform var(--md-sys-motion-duration-short2) var(--md-sys-motion-easing-standard-accelerate);
+}
+
+.host:has(:focus-visible) > .tooltip {
+  opacity: 1;
+  transform: translate(var(--_x, 0), var(--_y, 0)) scale(1);
+  transition:
+    opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard-decelerate) 500ms,
+    transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial) 500ms;
+}
+
+@media (hover: hover) {
+  .host:hover > .tooltip {
+    opacity: 1;
+    transform: translate(var(--_x, 0), var(--_y, 0)) scale(1);
+    transition:
+      opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard-decelerate) 500ms,
+      transform var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial)
+        500ms;
+  }
+}
+
+.host:active > .tooltip {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+.bottom {
+  top: calc(100% + 4px);
+  left: 50%;
+  --_x: -50%;
+  transform-origin: top center;
+}
+
+.bottomStart {
+  top: calc(100% + 4px);
+  left: 0;
+  transform-origin: top left;
+}
+
+.bottomEnd {
+  top: calc(100% + 4px);
+  right: 0;
+  transform-origin: top right;
+}
+
+.top {
+  bottom: calc(100% + 4px);
+  left: 50%;
+  --_x: -50%;
+  transform-origin: bottom center;
+}

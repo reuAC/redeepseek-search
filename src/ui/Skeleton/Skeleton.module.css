@@ -1,0 +1,38 @@
+.skeleton {
+  display: block;
+  background: linear-gradient(
+    100deg,
+    var(--md-sys-color-surface-container-high) 30%,
+    var(--md-sys-color-surface-container-highest) 50%,
+    var(--md-sys-color-surface-container-high) 70%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 1.6s var(--md-sys-motion-easing-standard) infinite;
+}
+
+.text {
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+.rounded {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

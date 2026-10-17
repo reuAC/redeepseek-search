@@ -1,0 +1,44 @@
+.logo {
+  display: inline-block;
+  font-family: var(--md-ref-typeface-brand);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.hero {
+  font-size: clamp(48px, 10vw, 72px);
+}
+
+.compact {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.blue {
+  color: var(--app-brand-blue);
+}
+
+.red {
+  color: var(--app-brand-red);
+}
+
+.yellow {
+  color: var(--app-brand-yellow);
+}
+
+.green {
+  color: var(--app-brand-green);
+}
+
+.home {
+  display: inline-flex;
+  padding: 6px 8px;
+  margin: -6px -8px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: none;
+  cursor: pointer;
+}

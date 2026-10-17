@@ -1,0 +1,337 @@
+/*
+ * Material Design 3 系统令牌（颜色以外）。
+ * 颜色角色 --md-sys-color-* 由 theme/scheme.ts 根据种子色动态生成并注入 :root。
+ */
+
+:root {
+  /* ---------- Typeface ---------- */
+  --md-ref-typeface-brand:
+    'Google Sans Flex Variable', 'Google Sans', 'PingFang SC', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    'Noto Sans SC', system-ui, sans-serif;
+  --md-ref-typeface-plain:
+    'Google Sans Flex Variable', 'Google Sans', 'PingFang SC', 'Microsoft YaHei UI', 'Microsoft YaHei',
+    'Noto Sans SC', system-ui, sans-serif;
+  --md-ref-typeface-mono: 'Google Sans Code', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* ---------- Typescale (font / line-height / weight / tracking) ---------- */
+  --md-sys-typescale-display-large: 400 57px / 64px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-large-tracking: -0.25px;
+  --md-sys-typescale-display-medium: 400 45px / 52px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-small: 400 36px / 44px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-large: 400 32px / 40px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-medium: 400 28px / 36px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-small: 400 24px / 32px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-large: 400 22px / 28px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-medium: 500 16px / 24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-title-medium-tracking: 0.15px;
+  --md-sys-typescale-title-small: 500 14px / 20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-title-small-tracking: 0.1px;
+  --md-sys-typescale-body-large: 400 16px / 24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-large-tracking: 0.5px;
+  --md-sys-typescale-body-medium: 400 14px / 20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-medium-tracking: 0.25px;
+  --md-sys-typescale-body-small: 400 12px / 16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-small-tracking: 0.4px;
+  --md-sys-typescale-label-large: 500 14px / 20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-large-tracking: 0.1px;
+  --md-sys-typescale-label-medium: 500 12px / 16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-medium-tracking: 0.5px;
+  --md-sys-typescale-label-small: 500 11px / 16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-small-tracking: 0.5px;
+
+  /* ---------- Shape ---------- */
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-large-increased: 20px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-extra-large-increased: 32px;
+  --md-sys-shape-corner-extra-extra-large: 48px;
+  --md-sys-shape-corner-full: 9999px;
+
+  /* ---------- Elevation ---------- */
+  --_shadow-key: color-mix(in srgb, var(--md-sys-color-shadow) 30%, transparent);
+  --_shadow-ambient: color-mix(in srgb, var(--md-sys-color-shadow) 15%, transparent);
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 2px 0 var(--_shadow-key), 0 1px 3px 1px var(--_shadow-ambient);
+  --md-sys-elevation-level2: 0 1px 2px 0 var(--_shadow-key), 0 2px 6px 2px var(--_shadow-ambient);
+  --md-sys-elevation-level3: 0 1px 3px 0 var(--_shadow-key), 0 4px 8px 3px var(--_shadow-ambient);
+  --md-sys-elevation-level4: 0 2px 3px 0 var(--_shadow-key), 0 6px 10px 4px var(--_shadow-ambient);
+  --md-sys-elevation-level5: 0 4px 4px 0 var(--_shadow-key), 0 8px 12px 6px var(--_shadow-ambient);
+
+  /* ---------- State layers ---------- */
+  --md-sys-state-hover-opacity: 0.08;
+  --md-sys-state-focus-opacity: 0.1;
+  --md-sys-state-pressed-opacity: 0.1;
+  --md-sys-state-dragged-opacity: 0.16;
+  --md-sys-state-disabled-container-opacity: 0.12;
+  --md-sys-state-disabled-content-opacity: 0.38;
+
+  /* ---------- Motion: easing ---------- */
+  --md-sys-motion-easing-linear: cubic-bezier(0, 0, 1, 1);
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+
+  /* ---------- Motion: duration ---------- */
+  --md-sys-motion-duration-short1: 50ms;
+  --md-sys-motion-duration-short2: 100ms;
+  --md-sys-motion-duration-short3: 150ms;
+  --md-sys-motion-duration-short4: 200ms;
+  --md-sys-motion-duration-medium1: 250ms;
+  --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms;
+  --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1: 450ms;
+  --md-sys-motion-duration-long2: 500ms;
+  --md-sys-motion-duration-long3: 550ms;
+  --md-sys-motion-duration-long4: 600ms;
+  --md-sys-motion-duration-extra-long1: 700ms;
+  --md-sys-motion-duration-extra-long2: 800ms;
+  --md-sys-motion-duration-extra-long3: 900ms;
+  --md-sys-motion-duration-extra-long4: 1000ms;
+
+  /* ---------- Motion: MD3 Expressive springs（由弹簧物理参数采样为 linear()） ---------- */
+  --md-sys-motion-spring-fast-spatial-duration: 155ms;
+  --md-sys-motion-spring-fast-spatial: linear(
+    0,
+    0.025,
+    0.088,
+    0.171,
+    0.264,
+    0.359,
+    0.45,
+    0.536,
+    0.613,
+    0.681,
+    0.74,
+    0.79,
+    0.833,
+    0.868,
+    0.898,
+    0.921,
+    0.94,
+    0.955,
+    0.967,
+    0.977,
+    0.984,
+    0.989,
+    0.993,
+    0.996,
+    1
+  );
+  --md-sys-motion-spring-default-spatial-duration: 219ms;
+  --md-sys-motion-spring-default-spatial: linear(
+    0,
+    0.025,
+    0.087,
+    0.171,
+    0.264,
+    0.358,
+    0.45,
+    0.535,
+    0.612,
+    0.68,
+    0.739,
+    0.79,
+    0.833,
+    0.868,
+    0.897,
+    0.921,
+    0.94,
+    0.955,
+    0.967,
+    0.976,
+    0.984,
+    0.989,
+    0.993,
+    0.996,
+    1
+  );
+  --md-sys-motion-spring-slow-spatial-duration: 334ms;
+  --md-sys-motion-spring-slow-spatial: linear(
+    0,
+    0.025,
+    0.087,
+    0.17,
+    0.263,
+    0.358,
+    0.449,
+    0.534,
+    0.611,
+    0.679,
+    0.739,
+    0.789,
+    0.832,
+    0.867,
+    0.897,
+    0.92,
+    0.94,
+    0.955,
+    0.967,
+    0.976,
+    0.983,
+    0.989,
+    0.993,
+    0.996,
+    1
+  );
+  --md-sys-motion-spring-fast-effects-duration: 137ms;
+  --md-sys-motion-spring-fast-effects: linear(
+    0,
+    0.049,
+    0.157,
+    0.285,
+    0.411,
+    0.525,
+    0.623,
+    0.705,
+    0.771,
+    0.824,
+    0.866,
+    0.898,
+    0.923,
+    0.943,
+    0.957,
+    0.968,
+    0.976,
+    0.982,
+    0.987,
+    0.99,
+    0.993,
+    0.995,
+    0.996,
+    0.997,
+    1
+  );
+  --md-sys-motion-spring-default-effects-duration: 211ms;
+  --md-sys-motion-spring-default-effects: linear(
+    0,
+    0.049,
+    0.157,
+    0.284,
+    0.41,
+    0.525,
+    0.623,
+    0.705,
+    0.771,
+    0.824,
+    0.866,
+    0.898,
+    0.923,
+    0.942,
+    0.957,
+    0.968,
+    0.976,
+    0.982,
+    0.987,
+    0.99,
+    0.993,
+    0.995,
+    0.996,
+    0.997,
+    1
+  );
+  --md-sys-motion-spring-expressive-fast-spatial-duration: 347ms;
+  --md-sys-motion-spring-expressive-fast-spatial: linear(
+    0,
+    0.071,
+    0.235,
+    0.435,
+    0.631,
+    0.8,
+    0.929,
+    1.017,
+    1.069,
+    1.092,
+    1.094,
+    1.083,
+    1.065,
+    1.046,
+    1.028,
+    1.014,
+    1.003,
+    0.996,
+    0.992,
+    0.991,
+    0.991,
+    0.993,
+    0.995,
+    0.996,
+    1
+  );
+  --md-sys-motion-spring-expressive-default-spatial-duration: 411ms;
+  --md-sys-motion-spring-expressive-default-spatial: linear(
+    0,
+    0.047,
+    0.155,
+    0.291,
+    0.432,
+    0.563,
+    0.677,
+    0.771,
+    0.846,
+    0.903,
+    0.945,
+    0.974,
+    0.994,
+    1.005,
+    1.012,
+    1.015,
+    1.015,
+    1.014,
+    1.012,
+    1.01,
+    1.008,
+    1.006,
+    1.004,
+    1.003,
+    1
+  );
+
+  /* ---------- 品牌渐变（Google 四色，深色模式提亮） ---------- */
+  --app-brand-blue: #4285f4;
+  --app-brand-red: #ea4335;
+  --app-brand-yellow: #fbbc04;
+  --app-brand-green: #34a853;
+}
+
+:root[data-theme='dark'] {
+  --app-brand-blue: #8ab4f8;
+  --app-brand-red: #f28b82;
+  --app-brand-yellow: #fdd663;
+  --app-brand-green: #81c995;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --md-sys-motion-duration-short1: 0ms;
+    --md-sys-motion-duration-short2: 0ms;
+    --md-sys-motion-duration-short3: 0ms;
+    --md-sys-motion-duration-short4: 0ms;
+    --md-sys-motion-duration-medium1: 0ms;
+    --md-sys-motion-duration-medium2: 0ms;
+    --md-sys-motion-duration-medium3: 0ms;
+    --md-sys-motion-duration-medium4: 0ms;
+    --md-sys-motion-duration-long1: 0ms;
+    --md-sys-motion-duration-long2: 0ms;
+    --md-sys-motion-duration-long3: 0ms;
+    --md-sys-motion-duration-long4: 0ms;
+    --md-sys-motion-duration-extra-long1: 0ms;
+    --md-sys-motion-duration-extra-long2: 0ms;
+    --md-sys-motion-duration-extra-long3: 0ms;
+    --md-sys-motion-duration-extra-long4: 0ms;
+    --md-sys-motion-spring-fast-spatial-duration: 0ms;
+    --md-sys-motion-spring-default-spatial-duration: 0ms;
+    --md-sys-motion-spring-slow-spatial-duration: 0ms;
+    --md-sys-motion-spring-fast-effects-duration: 0ms;
+    --md-sys-motion-spring-default-effects-duration: 0ms;
+    --md-sys-motion-spring-expressive-fast-spatial-duration: 0ms;
+    --md-sys-motion-spring-expressive-default-spatial-duration: 0ms;
+  }
+}

@@ -1,0 +1,45 @@
+.ripple {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  color: inherit;
+}
+
+/* 状态层：颜色继承内容色（currentColor），透明度遵循 MD3 state 令牌 */
+.ripple::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+/* 仅在真正支持悬停的设备上显示 hover 层，避免触屏点击后状态层“粘住” */
+@media (hover: hover) {
+  :hover > .ripple::before {
+    opacity: var(--md-sys-state-hover-opacity);
+  }
+}
+
+:focus-visible > .ripple::before {
+  opacity: var(--md-sys-state-focus-opacity);
+}
+
+/* 按压态由波纹本身表达，不再叠加整块状态层（否则按下瞬间会突然变暗） */
+
+:disabled > .ripple,
+[aria-disabled='true'] > .ripple {
+  display: none;
+}
+
+.wave {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, currentColor max(calc(100% - 70px), 65%), transparent 100%);
+  opacity: var(--md-sys-state-pressed-opacity);
+  transform: scale(0.2);
+  pointer-events: none;
+}

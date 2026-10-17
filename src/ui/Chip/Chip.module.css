@@ -1,0 +1,89 @@
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-small);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-label-large);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    padding var(--md-sys-motion-spring-default-spatial-duration) var(--md-sys-motion-spring-default-spatial),
+    border-radius var(--md-sys-motion-spring-fast-spatial-duration) var(--md-sys-motion-spring-fast-spatial);
+}
+
+.chip:active:not(:disabled) {
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.withLeading {
+  padding-left: 8px;
+}
+
+.withTrailing {
+  padding-right: 8px;
+}
+
+.elevated {
+  box-shadow: var(--md-sys-elevation-level1);
+  background: var(--md-sys-color-surface-container-low);
+}
+
+.selected {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  box-shadow: none;
+}
+
+.selected:hover {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+/* 前置图标槽位宽度平滑展开，图标以弹簧动效缩放入场 */
+.leading {
+  display: inline-flex;
+  width: 0;
+  overflow: hidden;
+  transition: width var(--md-sys-motion-spring-default-spatial-duration)
+    var(--md-sys-motion-spring-default-spatial);
+}
+
+.leadingVisible {
+  width: 26px;
+}
+
+.leadingIcon {
+  flex-shrink: 0;
+  color: var(--md-sys-color-primary);
+  animation: chip-icon-in var(--md-sys-motion-spring-expressive-fast-spatial-duration)
+    var(--md-sys-motion-spring-expressive-fast-spatial) both;
+}
+
+.selected .leadingIcon {
+  color: currentColor;
+}
+
+.trailing {
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.label {
+  position: relative;
+}
+
+@keyframes chip-icon-in {
+  from {
+    transform: scale(0.4) rotate(-30deg);
+    opacity: 0;
+  }
+}

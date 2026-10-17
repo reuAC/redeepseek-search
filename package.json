@@ -1,0 +1,44 @@
+{
+  "name": "redeepseek-search",
+  "private": true,
+  "version": "1.0.0",
+  "description": "基于 DeepSeek Search / Fetch API 的网页搜索引擎",
+  "license": "MIT",
+  "homepage": "https://reuac.github.io/redeepseek-search/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reuAC/redeepseek-search.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@fontsource-variable/google-sans-flex": "^5.3.2",
+    "@material/material-color-utilities": "^0.4.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
+    "vite": "^8.3.4"
+  }
+}

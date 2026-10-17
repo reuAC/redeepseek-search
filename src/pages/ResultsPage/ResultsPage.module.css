@@ -1,0 +1,163 @@
+.page {
+  --_gutter: 24px;
+  --_logo-col: 148px;
+  --_gap: 24px;
+  --_content-start: calc(var(--_gutter) + var(--_logo-col) + var(--_gap));
+  min-height: 100dvh;
+}
+
+/* MD3 Top app bar：滚动后切换为 surface-container 并显示分隔 */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--md-sys-color-surface);
+  transition:
+    background-color var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard),
+    box-shadow var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard);
+}
+
+.scrolled {
+  background: var(--md-sys-color-surface-container);
+  box-shadow: 0 1px 0 var(--md-sys-color-outline-variant);
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: var(--_logo-col) minmax(0, 720px) 1fr;
+  align-items: center;
+  column-gap: var(--_gap);
+  padding: 16px 12px 8px var(--_gutter);
+}
+
+.logoCell {
+  display: flex;
+  align-items: center;
+}
+
+.searchCell {
+  min-width: 0;
+}
+
+.actionsCell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.filtersRow {
+  padding: 4px 16px 12px var(--_content-start);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+}
+
+.main {
+  max-width: calc(var(--_content-start) + 680px);
+  padding: 8px 16px 80px var(--_content-start);
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  margin: 8px 0 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-medium);
+  animation: fade var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-standard) both;
+}
+
+.actualQuery {
+  font: var(--md-sys-typescale-body-small);
+}
+
+.actualQuery code {
+  padding: 2px 8px;
+  border-radius: var(--md-sys-shape-corner-small);
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-ref-typeface-mono);
+}
+
+/* 搜索词是网址时：提供直接抓取阅读（Fetch 接口） */
+.urlCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 8px 0 16px;
+  padding: 16px 16px 16px 20px;
+  border-radius: var(--md-sys-shape-corner-large);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  animation: fade var(--md-sys-motion-duration-medium4) var(--md-sys-motion-easing-standard) both;
+}
+
+.urlIcon {
+  flex-shrink: 0;
+}
+
+.urlText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.urlTitle {
+  font: var(--md-sys-typescale-title-small);
+}
+
+.urlHint {
+  font: var(--md-sys-typescale-body-small);
+  opacity: 0.85;
+}
+
+.question {
+  margin: 8px 0 4px;
+}
+
+.question > * {
+  max-width: 100%;
+}
+
+.more {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 8px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .page {
+    --_gutter: 16px;
+    --_content-start: 16px;
+  }
+
+  .headerRow {
+    grid-template-columns: auto 1fr;
+    row-gap: 12px;
+    padding: 12px 8px 8px 16px;
+  }
+
+  .searchCell {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-right: 8px;
+  }
+
+  /* 不能设置 overflow：会把筛选菜单的下拉面板裁掉 */
+  .filtersRow {
+    padding: 4px 16px 12px;
+  }
+}

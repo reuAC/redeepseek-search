@@ -1,0 +1,133 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.label {
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-body-large);
+}
+
+.supporting {
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-small);
+  letter-spacing: var(--md-sys-typescale-body-small-tracking);
+}
+
+/* ---------- 轨道 52×32 ---------- */
+
+.track {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 32px;
+  padding: 0;
+  border: 2px solid var(--md-sys-color-outline);
+  border-radius: 16px;
+  background: var(--md-sys-color-surface-container-highest);
+  cursor: pointer;
+  transition:
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    border-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.on {
+  border-color: var(--md-sys-color-primary);
+  background: var(--md-sys-color-primary);
+}
+
+/* ---------- 滑块：关 16px → 开 24px → 按下 28px ---------- */
+
+.handle {
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--md-sys-color-outline);
+  color: var(--md-sys-color-on-primary-container);
+  transform: translate(0, -50%);
+  transition:
+    transform var(--md-sys-motion-spring-default-spatial-duration)
+      var(--md-sys-motion-spring-expressive-fast-spatial),
+    width var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    height var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    left var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+/* 状态层光晕 */
+.handle::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+@media (hover: hover) {
+  .track:hover .handle::before {
+    opacity: var(--md-sys-state-hover-opacity);
+  }
+}
+
+.track:focus-visible .handle::before {
+  opacity: var(--md-sys-state-focus-opacity);
+}
+
+.on .handle {
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  background: var(--md-sys-color-on-primary);
+  transform: translate(20px, -50%);
+}
+
+.track:active .handle {
+  width: 28px;
+  height: 28px;
+  left: 0;
+}
+
+.on:active .handle {
+  left: 0;
+}
+
+.icon {
+  opacity: 0;
+  transform: scale(0.4) rotate(-45deg);
+  transition:
+    opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+    transform var(--md-sys-motion-spring-default-spatial-duration)
+      var(--md-sys-motion-spring-expressive-fast-spatial);
+}
+
+.on .icon {
+  opacity: 1;
+  transform: none;
+}
+
+.disabled {
+  opacity: 0.38;
+}
+
+.disabled .track,
+.disabled .text {
+  cursor: default;
+}

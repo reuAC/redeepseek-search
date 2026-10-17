@@ -1,0 +1,29 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 4px;
+  background: var(--md-sys-color-outline-variant);
+}
+
+.open {
+  background: color-mix(in srgb, var(--md-sys-color-on-surface-variant) 8%, transparent);
+}
+
+.reset {
+  animation: reset-in var(--md-sys-motion-spring-expressive-default-spatial-duration)
+    var(--md-sys-motion-spring-expressive-default-spatial) both;
+}
+
+@keyframes reset-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}

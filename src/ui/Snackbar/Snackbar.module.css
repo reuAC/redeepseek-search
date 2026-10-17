@@ -1,0 +1,69 @@
+.region {
+  position: fixed;
+  inset: auto 0 24px;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.snackbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 48px;
+  max-width: 560px;
+  padding: 4px 4px 4px 16px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  box-shadow: var(--md-sys-elevation-level3);
+  pointer-events: auto;
+  animation: snackbar-in var(--md-sys-motion-spring-expressive-default-spatial-duration)
+    var(--md-sys-motion-spring-expressive-default-spatial) both;
+}
+
+.exiting {
+  animation: snackbar-out var(--md-sys-motion-duration-short3)
+    var(--md-sys-motion-easing-emphasized-accelerate) both;
+}
+
+.text {
+  flex: 1;
+  padding: 10px 8px 10px 0;
+  font: var(--md-sys-typescale-body-medium);
+}
+
+.action {
+  height: 40px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--md-sys-color-inverse-primary);
+  font: var(--md-sys-typescale-label-large);
+  cursor: pointer;
+}
+
+.action:hover {
+  background: color-mix(in srgb, var(--md-sys-color-inverse-primary) 8%, transparent);
+}
+
+.close {
+  color: var(--md-sys-color-inverse-on-surface);
+}
+
+@keyframes snackbar-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.92);
+  }
+}
+
+@keyframes snackbar-out {
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

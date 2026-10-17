@@ -1,0 +1,33 @@
+.favicon {
+  --_size: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--_size);
+  height: var(--_size);
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--md-sys-color-surface-container-highest);
+  box-shadow: inset 0 0 0 1px var(--md-sys-color-outline-variant);
+}
+
+.large {
+  --_size: 40px;
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+.favicon img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.letter {
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-label-medium);
+}
+
+.large .letter {
+  font: var(--md-sys-typescale-title-medium);
+}

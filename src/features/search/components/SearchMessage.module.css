@@ -1,0 +1,73 @@
+.card {
+  --_container: var(--md-sys-color-secondary-container);
+  --_on-container: var(--md-sys-color-on-secondary-container);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 28px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background: var(--md-sys-color-surface-container-low);
+  animation: card-in var(--md-sys-motion-spring-expressive-default-spatial-duration)
+    var(--md-sys-motion-spring-expressive-default-spatial) both;
+}
+
+.error {
+  --_container: var(--md-sys-color-error-container);
+  --_on-container: var(--md-sys-color-on-error-container);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--md-sys-shape-corner-large);
+  background: var(--_container);
+  color: var(--_on-container);
+}
+
+.title {
+  margin: 4px 0 0;
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-headline-small);
+}
+
+.body {
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-large);
+  word-break: break-word;
+}
+
+.body p {
+  margin: 0 0 8px;
+}
+
+.body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.body code {
+  padding: 1px 6px;
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  background: var(--md-sys-color-surface-container-highest);
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 0.9em;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}

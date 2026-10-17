@@ -1,0 +1,135 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* MD3 Small top app bar（仅行尾操作） */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 60px;
+  padding: 0 12px;
+}
+
+/*
+ * 与 Google 首页同样的纵向节奏：内容自上而下排列，搜索框中心约位于视口 31% 高度处
+ * （顶栏 60 + 上边距 + 字标 ≈80 + 间距 32 + 半个搜索框 26 ≈ 31vh）
+ */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: max(24px, calc(31vh - 198px)) 16px 48px;
+  animation: fade-in var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-standard) both;
+}
+
+.brand {
+  margin: 0 0 30px;
+  line-height: 0;
+}
+
+/* 建议面板展开时需要盖住下方按钮 */
+.search {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* 中性色的方形按钮：与页面背景接近，悬停时浮起 */
+.action {
+  height: 36px;
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  font-weight: 400;
+}
+
+.notice {
+  margin: 28px 0 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-medium);
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 12px;
+  margin: 28px 0 0;
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-small);
+}
+
+.inlineLink {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--app-color-link);
+  font: inherit;
+  cursor: pointer;
+}
+
+.inlineLink:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 16px 28px;
+  color: var(--md-sys-color-on-surface-variant);
+  font: var(--md-sys-typescale-body-medium);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+
+.footerLink {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footerLink:hover {
+  color: var(--md-sys-color-on-surface);
+  text-decoration: underline;
+}
+
+.caption {
+  color: var(--md-sys-color-outline);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
+}

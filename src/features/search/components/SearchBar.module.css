@@ -1,0 +1,231 @@
+.slot {
+  --_height: 52px;
+  --_radius: 26px;
+  /* 浅色：白色容器 + 细描边 + 柔和阴影；深色：提亮一级的容器，不加描边 */
+  --_container: var(--md-sys-color-surface-container-lowest);
+  --_outline: var(--md-sys-color-outline-variant);
+  position: relative;
+  width: 100%;
+  height: var(--_height);
+}
+
+:global(:root[data-theme='dark']) .slot {
+  --_container: var(--md-sys-color-surface-container-high);
+  --_outline: transparent;
+}
+
+.hero {
+  max-width: 692px;
+}
+
+.compact {
+  --_height: 46px;
+  --_radius: 23px;
+  max-width: 692px;
+}
+
+/* 搜索面板绝对定位，展开时覆盖下方内容而不推动布局 */
+.surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  border-radius: var(--_radius);
+  background: var(--_container);
+  color: var(--md-sys-color-on-surface);
+  box-shadow:
+    0 0 0 1px var(--_outline),
+    0 1px 6px 0 color-mix(in srgb, var(--md-sys-color-shadow) 8%, transparent);
+  transition:
+    box-shadow var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard),
+    background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+@media (hover: hover) {
+  .surface:hover {
+    box-shadow:
+      0 0 0 1px transparent,
+      0 1px 6px 0 color-mix(in srgb, var(--md-sys-color-shadow) 22%, transparent);
+  }
+}
+
+.surface:focus-within {
+  box-shadow:
+    0 0 0 1px transparent,
+    0 1px 6px 0 color-mix(in srgb, var(--md-sys-color-shadow) 26%, transparent);
+}
+
+/* 展开为 MD3 search view：容器提升并加深阴影 */
+.expanded {
+  z-index: 30;
+  box-shadow:
+    0 0 0 1px transparent,
+    0 4px 12px 0 color-mix(in srgb, var(--md-sys-color-shadow) 24%, transparent) !important;
+}
+
+/* ---------- 输入行 ---------- */
+
+.row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: var(--_height);
+  padding: 0 4px 0 16px;
+  border-radius: inherit;
+}
+
+.leading {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 14px;
+  color: var(--md-sys-color-outline);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-body-large);
+  letter-spacing: var(--md-sys-typescale-body-large-tracking);
+  caret-color: var(--md-sys-color-primary);
+}
+
+.input::placeholder {
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.8;
+}
+
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clear {
+  display: inline-flex;
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+  pointer-events: none;
+  transition:
+    opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard),
+    transform var(--md-sys-motion-spring-expressive-fast-spatial-duration)
+      var(--md-sys-motion-spring-expressive-fast-spatial);
+}
+
+.clearVisible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.divider {
+  flex-shrink: 0;
+  width: 1px;
+  height: 24px;
+  margin: 0 4px;
+  background: var(--md-sys-color-outline-variant);
+}
+
+.submit {
+  color: var(--md-sys-color-primary);
+}
+
+/* ---------- 建议面板：grid 0fr → 1fr 平滑展开 ---------- */
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized);
+}
+
+.expanded .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.list {
+  margin: 0 16px;
+  padding: 4px 0 10px;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  list-style: none;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 44px;
+  margin: 0 -8px;
+  padding: 0 4px 0 8px;
+  border-radius: var(--md-sys-shape-corner-medium);
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-body-large);
+  cursor: pointer;
+  transition: background-color var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+.expanded .option {
+  animation: option-in var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate)
+    both;
+}
+
+.optionActive {
+  background: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+.optionIcon {
+  flex-shrink: 0;
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.optionText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-standard);
+}
+
+.option:hover .remove,
+.optionActive .remove {
+  opacity: 1;
+}
+
+.remove:hover {
+  background: color-mix(in srgb, var(--md-sys-color-on-surface) 10%, transparent);
+}
+
+@keyframes option-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}

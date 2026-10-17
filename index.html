@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>DeepSeek 搜索</title>
+    <!-- 在 React 挂载前确定深浅色，避免刷新时先闪白再变暗 -->
+    <style>
+      html {
+        background: #ffffff;
+      }
+      html[data-theme='dark'] {
+        background: #121212;
+      }
+    </style>
+    <script>
+      try {
+        var mode = (JSON.parse(localStorage.getItem('ds-search:theme') || '{}') || {}).mode
+        var dark = mode === 'dark' || (mode !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+.group {
+  display: flex;
+  width: 100%;
+}
+
+.segment {
+  position: relative;
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 0;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-label-large);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-standard),
+    color var(--md-sys-motion-duration-medium1) var(--md-sys-motion-easing-standard),
+    border-radius var(--md-sys-motion-spring-default-spatial-duration)
+      var(--md-sys-motion-spring-default-spatial);
+}
+
+.segment + .segment {
+  margin-left: -1px;
+}
+
+.segment:first-child {
+  border-radius: 20px 0 0 20px;
+}
+
+.segment:last-child {
+  border-radius: 0 20px 20px 0;
+}
+
+.selected {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  cursor: default;
+}
+
+.icon {
+  flex-shrink: 0;
+  animation: segment-icon-in var(--md-sys-motion-spring-expressive-fast-spatial-duration)
+    var(--md-sys-motion-spring-expressive-fast-spatial) both;
+}
+
+.label {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes segment-icon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}

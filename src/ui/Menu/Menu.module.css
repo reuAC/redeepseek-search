@@ -1,0 +1,115 @@
+.anchor {
+  position: relative;
+  display: inline-flex;
+}
+
+/* popover 顶层元素：重置 UA 样式，位置由 JS 计算（position: fixed） */
+.menu {
+  position: fixed;
+  inset: auto;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+  margin: 0;
+  padding: 4px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-large);
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  box-shadow: var(--md-sys-elevation-level2);
+  overflow: visible;
+  transform-origin: top;
+  animation: menu-in var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate)
+    both;
+}
+
+.menu:not(:popover-open) {
+  display: none;
+}
+
+.menu[data-placement='top'] {
+  transform-origin: bottom;
+}
+
+.exiting {
+  pointer-events: none;
+  animation: menu-out var(--md-sys-motion-duration-short3) var(--md-sys-motion-easing-emphasized-accelerate)
+    both;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--md-sys-shape-corner-medium);
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  font: var(--md-sys-typescale-label-large);
+  letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  text-align: left;
+  cursor: pointer;
+  outline-offset: -2px;
+  animation: item-in var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-emphasized-decelerate)
+    both;
+  transition: background-color var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-standard);
+}
+
+.checked {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+.itemIcon {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+.checked .itemIcon {
+  color: inherit;
+}
+
+.itemLabel {
+  flex: 1;
+  position: relative;
+}
+
+.check {
+  animation: check-in var(--md-sys-motion-spring-expressive-fast-spatial-duration)
+    var(--md-sys-motion-spring-expressive-fast-spatial) both;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.6);
+    clip-path: inset(0 0 100% 0 round var(--md-sys-shape-corner-large));
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--md-sys-shape-corner-large));
+  }
+}
+
+@keyframes menu-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes check-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}

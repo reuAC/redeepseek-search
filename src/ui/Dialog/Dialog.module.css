@@ -1,0 +1,112 @@
+.dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-width: none;
+  max-height: min(calc(100vh - 48px), 760px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--md-sys-color-on-surface);
+  overflow: visible;
+}
+
+.dialog::backdrop {
+  background: color-mix(in srgb, var(--md-sys-color-scrim, #000) 32%, transparent);
+  animation: scrim-in var(--md-sys-motion-duration-medium2) var(--md-sys-motion-easing-standard) both;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  background: var(--md-sys-color-surface-container-high);
+  box-shadow: var(--md-sys-elevation-level3);
+  transform-origin: top center;
+  animation: dialog-in var(--md-sys-motion-duration-long2) var(--md-sys-motion-easing-emphasized-decelerate)
+    both;
+}
+
+.exiting::backdrop {
+  animation: scrim-out var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-emphasized-accelerate)
+    both;
+}
+
+.exiting .container {
+  animation: dialog-out var(--md-sys-motion-duration-short4) var(--md-sys-motion-easing-emphasized-accelerate)
+    both;
+}
+
+.header {
+  padding: 24px 24px 16px;
+}
+
+.withIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.icon {
+  color: var(--md-sys-color-secondary);
+}
+
+.headline {
+  margin: 0;
+  font: var(--md-sys-typescale-headline-small);
+  color: var(--md-sys-color-on-surface);
+}
+
+.content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 24px;
+  color: var(--md-sys-color-on-surface-variant);
+  animation: content-in var(--md-sys-motion-duration-medium4)
+    var(--md-sys-motion-easing-emphasized-decelerate) var(--md-sys-motion-duration-short3) both;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 24px;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(-32px) scale(0.96);
+    clip-path: inset(0 0 55% 0 round var(--md-sys-shape-corner-extra-large));
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--md-sys-shape-corner-extra-large));
+  }
+}
+
+@keyframes dialog-out {
+  to {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+}
+
+@keyframes content-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes scrim-out {
+  to {
+    opacity: 0;
+  }
+}
