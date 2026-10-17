@@ -92,7 +92,7 @@ export function SearchBar({
   }
 
   return (
-    <div className={cx(styles.slot, styles[variant])} style={{ viewTransitionName: 'app-search-bar' }}>
+    <div className={cx(styles.slot, styles[variant])}>
       <form
         id={formId}
         role="search"

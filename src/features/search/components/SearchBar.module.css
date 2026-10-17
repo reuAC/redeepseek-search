@@ -14,6 +14,11 @@
   --_outline: transparent;
 }
 
+/* 仅在页面切换期间作为共享元素（原因见 Logo.module.css） */
+:global(:root.page-transition) .slot {
+  view-transition-name: app-search-bar;
+}
+
 .hero {
   max-width: 692px;
 }

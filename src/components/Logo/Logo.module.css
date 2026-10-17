@@ -42,3 +42,11 @@
   background: none;
   cursor: pointer;
 }
+
+/*
+ * 仅在页面切换期间作为共享元素。若常驻命名，切换主题等其它 View Transition 时
+ * 它会被单独截图，并绘制在对话框之上。
+ */
+:global(:root.page-transition) .logo {
+  view-transition-name: app-logo;
+}

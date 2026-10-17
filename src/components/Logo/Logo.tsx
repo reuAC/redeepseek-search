@@ -19,15 +19,11 @@ export interface LogoProps {
   onClick?: () => void
 }
 
-/** DeepSeek 字标；在页面切换中作为共享元素过渡 */
+/** DeepSeek 字标；首页 ↔ 结果页切换时作为共享元素过渡 */
 export function Logo({ size = 'hero', onClick }: LogoProps) {
   const { m } = useI18n()
   const wordmark = (
-    <span
-      className={cx(styles.logo, styles[size])}
-      style={{ viewTransitionName: 'app-logo' }}
-      aria-hidden={onClick ? true : undefined}
-    >
+    <span className={cx(styles.logo, styles[size])} aria-hidden={onClick ? true : undefined}>
       {LETTERS.map(([letter, color], i) => (
         <span key={i} className={styles[color]}>
           {letter}

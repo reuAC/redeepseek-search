@@ -4,10 +4,13 @@ import { withViewTransition } from '@/lib/motion'
 import { formatRoute, pageOf, parseRoute, type Route } from './route'
 import { RouterContext, type NavigateOptions, type RouterContextValue } from './RouterContext'
 
-/** 跨页面（首页 ↔ 结果页）的切换使用 View Transition，共享元素平滑变形 */
+/**
+ * 跨页面（首页 ↔ 结果页）的切换使用 View Transition，共享元素平滑变形。
+ * page-transition 类用于只在页面切换期间启用共享元素命名。
+ */
 function commit(from: Route, to: Route, apply: () => void) {
   if (pageOf(from) === pageOf(to)) apply()
-  else withViewTransition(() => flushSync(apply))
+  else withViewTransition(() => flushSync(apply), { rootClass: 'page-transition' })
 }
 
 export function RouterProvider({ children }: { children: ReactNode }) {
